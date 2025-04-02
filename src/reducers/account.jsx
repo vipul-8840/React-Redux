@@ -9,7 +9,7 @@ export function accountReducers(state={amount:1},action)
         case dec :
             return {amount:state.amount-1};
         case incByAmt :
-            return {amount:state.amount + action.payload}
+            return {amount:state.amount + Number(action.payload)}
         case getAccUserPending:
             return {...state,pending:true};     ;
         case getAccUserFulfilled:

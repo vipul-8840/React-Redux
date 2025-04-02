@@ -9,7 +9,8 @@ export function bonusReducers(state={points:0},action)
       case incByAmt:
         if(action.payload>=100)
          {return {points:state.points+1}}
-        break;
+        return state;
+     
 
       default:
         return state
