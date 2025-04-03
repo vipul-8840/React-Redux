@@ -13,13 +13,18 @@ import { configureStore } from '@reduxjs/toolkit'
 //   account:accountReducers,
 //   bonus:bonusReducers
 // }),applyMiddleware(logger,thunk))
-import accountReducer from './Slice/counterSlice.jsx';
+import accountReducer from './Slice/amountSlice.jsx';
 import bonusReducer from './Slice/bonusSlice.jsx'
+import { Provider } from 'react-redux'
+import { adminApi } from './api/adminSlice.jsx'
 const store = configureStore({
-   reducers:{
+   reducer:{
       account:accountReducer,
-      bonus:bonusReducer 
-   }
+      bonus:bonusReducer ,
+      [adminApi.reducerPath]: adminApi.reducer,
+   },
+   middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(adminApi.middleware),
 })
 
 createRoot(document.getElementById('root')).render(

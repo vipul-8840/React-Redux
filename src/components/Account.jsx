@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { decrement, getUserAccount, increment, incrementByAmount } from '../accounts';
+import { decrement, increment, incrementByAmount } from '../Slice/amountSlice';
+
 
 const Account = () => {
+  // const amount = useSelector(state =>state.account.amount);
+  // const points= useSelector(state=>state.bonus.points);
+  // const dispatch = useDispatch();
+  const[value,setValue]=useState();
   const amount = useSelector(state =>state.account.amount);
   const points= useSelector(state=>state.bonus.points);
   const dispatch = useDispatch();
-  const[value,setValue]=useState();
-   
+
   return (
     <div className='card'>
         <div className='container'>
@@ -23,7 +27,7 @@ const Account = () => {
               setValue(e.target.value)
             }}/>
             <button onClick={()=>dispatch(incrementByAmount(value))}>IncrementByAmount</button>
-            <button onClick={()=>dispatch(getUserAccount(1))}>InitAccount</button>
+            {/* <button onClick={()=>dispatch(getUserAccount(1))}>InitAccount</button> */}
         </div>
     </div>
   )

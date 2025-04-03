@@ -1,19 +1,19 @@
 import {createSlice} from '@reduxjs/toolkit'
 const initialState = {
-    value:0
+    amount:10
 }
 const counterSlice =  createSlice({
-    name:'amount',
+    name:'account',
     initialState,
     reducers:{
         increment:(state)=>{
-            state.value = state.value+1;
+            state.amount = state.amount+1;
         },
         decrement:(state)=>{
-            state.value = state.value-1;
+            state.amount = state.amount-1;
         },
         incrementByAmount :(state,action)=>{
-             state.value = state.value + action.payload;
+             state.amount = state.amount+ Number(action.payload);
         },
     }
 }) 

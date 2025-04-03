@@ -1,6 +1,6 @@
  import {createSlice} from '@reduxjs/toolkit';
 const initialState = {
-   points:0
+   points:20
 }
 const bonusSlice =  createSlice({
     name:'bonus',
