@@ -1,18 +1,34 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-
-// Define a service using a base URL and expected endpoints
 export const adminApi = createApi({
-  reducerPath: 'admin',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/' }),
+  reducerPath: "adminApi",
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000/" }),
+  tagTypes: ["accounts"],
   endpoints: (build) => ({
     getAccounts: build.query({
       query: () => `accounts`,
-      providesTags:['accounts']
+      providesTags: ["accounts"],
     }),
+    // addAccount: build.mutation({
+    //   query: (id,amount) => ({
+    //     url: "accounts",
+    //     method: "POST",
+    //     body: {id,amount},
+    //   }),
+    //   invalidatesTags: ["accounts"],
+    // }),
+    // deleteAccount: build.mutation({
+    //   query: (id) => ({
+    //     url: `accounts/${id}`,
+    //     method: "DELETE",
+    //   }),
+    //   invalidatesTags: ["accounts"],
+    // }),
   }),
-})
+});
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
-export const { useGetAccountsQuery } = adminApi
+export const { 
+  useGetAccountsQuery, 
+  useAddAccountMutation, 
+  useDeleteAccountMutation 
+} = adminApi;
